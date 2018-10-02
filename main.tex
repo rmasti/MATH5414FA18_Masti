@@ -35,13 +35,17 @@
 \usepackage[protrusion=true,expansion=true]{microtype}  
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
 \newcommand*{\rttensor}[1]{\overline{\overline{#1}}}
-\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pfrac}[2]{\frac{\partial#1}{\partial#2}}
 
 \usepackage[pdftex]{graphicx}   
 \usepackage{url}
 
 
+\usepackage[numbers]{natbib}
+%\usepackage[style=ieee]{biblatex}
+
 %%% Custom sectioning
+
 \usepackage{sectsty}
 \allsectionsfont{\centering \normalfont\scshape}
 
@@ -83,7 +87,15 @@
 \begin{document}
 \maketitle
 \section{MRT Overview \& Simulation Setup}\label{sec:ovrvw}
-The magneto Rayleigh-Taylor instability (MRT) occurs when there is a heavy fluid supported by a light fluid under the influence of gravity with the addition of magnetic fields. Depending on the orientation of these magnetic fields they can have stabilizing characteristics for the growth of this instability. MRT is a hydrodynamic instability so it can be modeled using the ideal MagnetoHydroDynamic (MHD) equations. 
+The magneto Rayleigh-Taylor instability (MRT) occurs when there is a heavy fluid supported by a light fluid under the influence of gravity with the addition of magnetic fields. Depending on the orientation of these magnetic fields they can have stabilizing characteristics for the growth of this instability. MRT is a hydrodynamic instability so it can be modeled using the ideal MagnetoHydroDynamic (MHD) equations. This instability is one of the most detrimental instabilities in the plasma communities attempt to reach fusion ignition. Specifically as it applies to inertial confinement fusion devices such as the one at NIF in the Direct Drive concept shown in Figure
+
+
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/DDfusion}\label{fig:ovrvw:dd}
+    \caption{Shows the four main stages during a typical direct-drive target implosion.\cite{craxton2015}}
+  \end{figure}
+ 
 
 
 
@@ -108,16 +120,13 @@ The MHD equations are given by
     P &=\rho \epsilon_{internal} (\gamma - 1) \\
   \end{align*}
   \endminipage\hfill
-  \endminipage
-
-  , where the ideal gas is assumed and there is no external electric fields ($e.q.\;\eta \mathbf{j}$). The equation for the magnetic field must be manipulated with vector identities into a divergence form through
+  \endminipage, where the ideal gas is assumed and there is no external electric fields ($e.q.\;\eta \mathbf{j}$). The equation for the magnetic field must be manipulated with vector identities into a divergence form through
   \begin{align*}
     \pfrac{\mathbf{b}}{t} + \nabla\times(-\mathbf{u}\times\mathbf{b}) &= 0\\
     \pfrac{\mathbf{b}}{t} - \left[\mathbf{u}(\nabla\cdot\mathbf{b})-\mathbf{b}(\nabla\cdot\mathbf{u})+(\mathbf{b}\cdot \nabla)\mathbf{u}-(\mathbf{u}\cdot\nabla)\mathbf{b}\right] &= 0\\
     \pfrac{\mathbf{b}}{t} - \left[\nabla\cdot(\mathbf{b}\mathbf{u}^T)-\nabla\cdot(\mathbf{u}\mathbf{b}^T)\right] &= 0\\
     \pfrac{\mathbf{b}}{t} + \nabla\cdot\left[\mathbf{u}\mathbf{b}^T-\mathbf{b}\mathbf{u}^T\right] &= 0\\
-  \end{align*}
-  , and it now is in divergence form which can be used to write into the tensor product form.
+  \end{align*}, and it now is in divergence form which can be used to write into the tensor product form.
 
 
 The conservative variable are density, momentum, total energy, and magnetic field. For the given problem however it is more convenient to rewrite as
@@ -231,7 +240,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula 
   \item Third item in a list
 \end{enumerate}
 \cite{Slutz2010}
-  \bibliographystyle{plainnat}
+ \bibliographystyle{IEEEtran}
   \bibliography{reference}
 %%% End document
 \end{document}
