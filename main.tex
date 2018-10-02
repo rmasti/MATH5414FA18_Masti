@@ -93,11 +93,7 @@
 The magneto Rayleigh-Taylor instability (MRT) occurs when there is a heavy fluid supported by a light fluid under the influence of gravity with the addition of magnetic fields. Depending on the orientation of these magnetic fields they can have stabilizing characteristics for the growth of this instability. MRT is a hydrodynamic instability so it can be modeled using the ideal MagnetoHydroDynamic (MHD) equations. This instability is one of the most detrimental instabilities in the plasma communities attempt to reach fusion ignition. Specifically as it applies to inertial confinement fusion devices such as the one at NIF in the Direct Drive concept shown in Figure
 
 
-  \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{fig/DDfusion}\label{fig:ovrvw:dd}
-    \caption{Shows the four main stages during a typical direct-drive target implosion.\cite{craxton2015}}
-  \end{figure}
+ 
  
 
 
@@ -157,6 +153,13 @@ where $\mathbf{Q}$ is the conserved variables vector, and $\rttensor{T}$ is the 
   
   Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies 
 
+
+ \begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{fig/DDfusion}\label{fig:ovrvw:dd}
+    \caption{Shows the four main stages during a typical direct-drive target implosion.\cite{craxton2015}}
+  \end{figure}
+
 \subsection{Disc}
 In 2D Cartesian coordinates equation~\ref{eqn:mhdvector} can be rewritten as 
 \begin{equation} \label{eqn:mhdvecflux}
@@ -200,53 +203,11 @@ where $\vec{F}$ is the $\hat{x}$ direction flux, and $\vec{G}$ is the $\hat{y}$ 
   =0
 \]
 
-
-
-
-
-\begin{align}
-  A = 
-  \begin{bmatrix}
-  A_{11} & A_{21} \\
-    A_{21} & A_{22}
-  \end{bmatrix}
-\end{align}
-Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
-
-\subsubsection{Heading on level 3 (subsubsection)}
-Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
-
-\paragraph{Heading on level 4 (paragraph)}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. 
-
-
 \begin{lstlisting}
 int a = 4;
 \end{lstlisting}
 
-\section{Lists}
 
-\subsection{Example for list (3*itemize)}
-\begin{itemize}
-  \item First item in a list 
-    \begin{itemize}
-    \item First item in a list 
-      \begin{itemize}
-      \item First item in a list 
-      \item Second item in a list 
-      \end{itemize}
-    \item Second item in a list 
-    \end{itemize}
-  \item Second item in a list 
-\end{itemize}
-
-\subsection{Example for list (enumerate)}
-\begin{enumerate}
-  \item First item in a list 
-  \item Second item in a list 
-  \item Third item in a list
-\end{enumerate}
-\cite{Slutz2010}
  \bibliographystyle{IEEEtran}
   \bibliography{reference}
 %%% End document
