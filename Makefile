@@ -1,8 +1,8 @@
 PROJECT=main
 TEX=pdflatex
 BIBTEX=bibtex
-BUILDTEX=$(TEX) $(PROJECT).tex
-BUILDTEXDRAFT=$(TEX) -draftmode $(PROJECT).tex
+BUILDTEX=$(TEX) -shell-escape $(PROJECT).tex
+BUILDTEXDRAFT=$(TEX) -draftmode -shell-escape $(PROJECT).tex 
 
 all:
 	$(BUILDTEXDRAFT)
