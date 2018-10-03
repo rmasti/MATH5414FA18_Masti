@@ -5,7 +5,18 @@
 \usepackage[T1]{fontenc}
 \usepackage{fourier}
 
-\usepackage{minted}
+%\usepackage{minted}
+%\usemintedstyle{cpp}
+%\usemintedstyle{trac}
+%\newminted{cpp}{bgcolor=col, linenos=true}
+
+\usepackage{xcolor}
+\usepackage[pdftex]{graphicx}  
+\usepackage[]{minted}
+\setminted{linenos,bgcolor=col, obeytabs=true}
+\definecolor{col}{rgb}{0.85,0.85,0.85}
+%\BeforeBeginEnvironment{minted}{\begin{tcolorbox}}%
+%\AfterEndEnvironment{minted}{\end{tcolorbox}}%
 
 \usepackage[english]{babel}                                                                                                                     % English language/hyphenation
 \usepackage[protrusion=true,expansion=true]{microtype}  
@@ -13,7 +24,6 @@
 \newcommand*{\rttensor}[1]{\overline{\overline{#1}}}
 \newcommand{\pfrac}[2]{\frac{\partial#1}{\partial#2}}
 
-\usepackage[pdftex]{graphicx}  
 
 
 \usepackage{url}
@@ -225,7 +235,17 @@ The code is using Finite Volume Method (FVM) with Monotone Upwinding Scheme for 
 \subsection{Mesh Read}
 
 
-
+\begin{minted}{cpp}
+int main() {
+  int ni = 3;
+  int j[3];
+  for(int i = 0; i < ni; i++){ 
+    j[i] = i*i;
+    cout << "j=" << j[i] << "; i=" << i << endl;
+  }
+  return 0;
+}
+\end{minted}
 
  \bibliographystyle{IEEEtran}
   \bibliography{reference}
