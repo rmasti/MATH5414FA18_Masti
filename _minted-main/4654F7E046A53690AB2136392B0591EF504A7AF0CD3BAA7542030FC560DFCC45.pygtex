@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// loop over all ranks}
+\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{nj}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+  \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{ni}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{r} \PYG{o}{=} \PYG{n}{j}\PYG{o}{*}\PYG{n}{ni}\PYG{o}{+}\PYG{n}{i}\PYG{p}{;} \PYG{c+c1}{// current rank}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// mpi send}
+      \PYG{c+c1}{//block(row start, col start, rows, cols)}
+      \PYG{n}{temp} \PYG{o}{=} \PYG{n}{xcg}\PYG{p}{.}\PYG{n}{block}\PYG{p}{(}\PYG{n}{nyb}\PYG{o}{*}\PYG{n}{j}\PYG{p}{,} \PYG{n}{nxb}\PYG{o}{*}\PYG{n}{i}\PYG{p}{,} \PYG{n}{nybg}\PYG{p}{,} \PYG{n}{nxbg}\PYG{p}{);}
+      \PYG{n}{MPI\PYGZus{}Send}\PYG{p}{(}\PYG{n}{temp}\PYG{p}{.}\PYG{n}{data}\PYG{p}{(),} \PYG{n}{nxbg}\PYG{o}{*}\PYG{n}{nybg}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}DOUBLE}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{l+m+mi}{111}\PYG{p}{,} \PYG{n}{com2d}\PYG{p}{);}
+      \PYG{p}{...}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else}\PYG{p}{\PYGZob{}} \PYG{c+c1}{// rank 0 fills its own local geo}
+      \PYG{n}{xcLg} \PYG{o}{=} \PYG{n}{xcg}\PYG{p}{.}\PYG{n}{block}\PYG{p}{(}\PYG{n}{nyb}\PYG{o}{*}\PYG{n}{j}\PYG{p}{,} \PYG{n}{nxb}\PYG{o}{*}\PYG{n}{i}\PYG{p}{,} \PYG{n}{nybg}\PYG{p}{,} \PYG{n}{nxbg}\PYG{p}{);}
+      \PYG{p}{...}
+    \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

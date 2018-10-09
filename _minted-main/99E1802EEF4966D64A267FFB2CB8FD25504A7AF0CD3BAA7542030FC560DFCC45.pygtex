@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{MPI\PYGZus{}Comm\PYGZus{}size}\PYG{p}{(}\PYG{n}{MPI\PYGZus{}COMM\PYGZus{}WORLD}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{size}\PYG{p}{)}
+  \PYG{k+kt}{int} \PYG{n}{cnt} \PYG{o}{=} \PYG{n}{size}\PYG{p}{;}
+  \PYG{k+kt}{int} \PYG{n}{n} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{cnt} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{2}\PYG{p}{)\PYGZob{}}
+    \PYG{n}{cnt} \PYG{o}{=} \PYG{n}{cnt}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+    \PYG{n}{n}\PYG{o}{++}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{nj} \PYG{o}{=} \PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{));} \PYG{c+c1}{// partitions in the vert direction}
+  \PYG{n}{ni} \PYG{o}{=} \PYG{n}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{p}{(}\PYG{n}{n}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{+}\PYG{n}{n}\PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{2}\PYG{p}{);} \PYG{c+c1}{// partitions in the horiz direction}
+\end{Verbatim}

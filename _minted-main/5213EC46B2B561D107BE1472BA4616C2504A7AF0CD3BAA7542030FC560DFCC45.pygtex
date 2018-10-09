@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kt}{int} \PYG{n}{nx} \PYG{o}{=} \PYG{n}{xc}\PYG{p}{.}\PYG{n}{cols}\PYG{p}{();}
+  \PYG{k+kt}{int} \PYG{n}{ny} \PYG{o}{=} \PYG{n}{xc}\PYG{p}{.}\PYG{n}{rows}\PYG{p}{();}
+  \PYG{k+kt}{int} \PYG{n}{nxb} \PYG{o}{=} \PYG{n}{nx}\PYG{o}{/}\PYG{n}{ni}\PYG{p}{;} \PYG{c+c1}{// nx per partition}
+  \PYG{k+kt}{int} \PYG{n}{nyb} \PYG{o}{=} \PYG{n}{ny}\PYG{o}{/}\PYG{n}{nj}\PYG{p}{;} \PYG{c+c1}{// ny per partition}
+
+  \PYG{n}{nb}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{nxb}\PYG{p}{;}
+  \PYG{n}{nb}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{nyb}\PYG{p}{;}
+  \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{r} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{r} \PYG{o}{\PYGZlt{}} \PYG{n}{size}\PYG{p}{;} \PYG{n}{r}\PYG{o}{++}\PYG{p}{)}
+    \PYG{n}{MPI\PYGZus{}Send}\PYG{p}{(}\PYG{n}{nb}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}INT}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{l+m+mi}{999}\PYG{p}{,} \PYG{n}{com2d}\PYG{p}{);}
+\end{Verbatim}

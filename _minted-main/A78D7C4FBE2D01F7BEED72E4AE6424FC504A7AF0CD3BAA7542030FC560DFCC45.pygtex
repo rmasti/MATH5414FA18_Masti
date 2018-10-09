@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{typedef} \PYG{n}{Matrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{double}\PYG{p}{,}\PYG{n}{Dynamic}\PYG{p}{,}\PYG{n}{Dynamic}\PYG{p}{,}\PYG{n}{RowMajor}\PYG{o}{\PYGZgt{}} \PYG{n}{RowMajorMatrixXd}\PYG{p}{;}
+\end{Verbatim}

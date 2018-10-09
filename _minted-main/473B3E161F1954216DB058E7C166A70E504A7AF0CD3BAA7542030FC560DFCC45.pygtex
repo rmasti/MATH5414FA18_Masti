@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{MPI\PYGZus{}Comm} \PYG{n}{meshBlock}\PYG{p}{(}
+    \PYG{k}{const} \PYG{n}{string} \PYG{n}{mesh}\PYG{p}{,}            \PYG{c+c1}{//In: mesh name to read}
+    \PYG{k}{const} \PYG{n}{string} \PYG{n}{outputFolder}\PYG{p}{,}    \PYG{c+c1}{//In: name of output dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{xcLg}\PYG{p}{,}       \PYG{c+c1}{//Out: local x center coord}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{ycLg}\PYG{p}{,}       \PYG{c+c1}{//Out: local y center coord}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{nixL}\PYG{p}{,}       \PYG{c+c1}{//Out: local x comp norm vec i dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{niyL}\PYG{p}{,}       \PYG{c+c1}{//Out: local y comp norm vec i dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{njxL}\PYG{p}{,}       \PYG{c+c1}{//Out: local x comp norm vec j dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{njyL}\PYG{p}{,}       \PYG{c+c1}{//Out: local y comp norm vec j dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{AiL}\PYG{p}{,}        \PYG{c+c1}{//Out: local area i dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{AjL}\PYG{p}{,}        \PYG{c+c1}{//Out: local area j dir}
+    \PYG{n}{RowMajorMatrixXd} \PYG{o}{\PYGZam{}}\PYG{n}{VolumeL}\PYG{p}{,}    \PYG{c+c1}{//Out: local cell volume}
+    \PYG{k}{const} \PYG{n}{constants} \PYG{n}{C}\PYG{p}{)}
+\end{Verbatim}

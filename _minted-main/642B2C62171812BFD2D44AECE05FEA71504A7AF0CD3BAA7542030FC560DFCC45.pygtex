@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{,} \PYG{n}{l}\PYG{p}{,} \PYG{n}{u}\PYG{p}{,} \PYG{n}{d}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{rank}\PYG{p}{;}
+\PYG{n}{MPI\PYGZus{}Comm\PYGZus{}rank}\PYG{p}{(}\PYG{n}{com2d}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{rank}\PYG{p}{);}
+\PYG{c+c1}{//MPI\PYGZus{}Cart\PYGZus{}Shift(communicator, direction, displacement, source, dest)}
+\PYG{n}{MPI\PYGZus{}Cart\PYGZus{}shift}\PYG{p}{(}\PYG{n}{com2d}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{d}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{u}\PYG{p}{);}
+\PYG{n}{MPI\PYGZus{}Cart\PYGZus{}shift}\PYG{p}{(}\PYG{n}{com2d}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{l}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{r}\PYG{p}{);}
+\end{Verbatim}

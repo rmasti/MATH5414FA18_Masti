@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{if}\PYG{p}{(}\PYG{n}{rank} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+  \PYG{n}{RowMajorMatrixXd} \PYG{n}{xn}\PYG{p}{,} \PYG{n}{yn}\PYG{p}{;}
+  \PYG{n}{RowMajorMatrixXd} \PYG{n}{xc}\PYG{p}{,} \PYG{n}{yc}\PYG{p}{;}
+  \PYG{n}{inputMesh}\PYG{p}{(}\PYG{n}{xn}\PYG{p}{,} \PYG{n}{yn}\PYG{p}{,} \PYG{n}{xc}\PYG{p}{,} \PYG{n}{yc}\PYG{p}{,} \PYG{n}{mesh}\PYG{p}{);}
+  \PYG{p}{...}
+  \PYG{n}{extrapCopyCoords}\PYG{p}{(}\PYG{n}{xc\PYGZus{}g}\PYG{p}{,} \PYG{n}{yc\PYGZus{}g}\PYG{p}{,} \PYG{n}{xc}\PYG{p}{,} \PYG{n}{yc}\PYG{p}{,} \PYG{n}{C}\PYG{p}{);}
+  \PYG{p}{...}
+  \PYG{n}{computeArea}\PYG{p}{(}\PYG{n}{Ai}\PYG{p}{,} \PYG{n}{Aj}\PYG{p}{,} \PYG{n}{xn}\PYG{p}{,} \PYG{n}{yn}\PYG{p}{);}
+  \PYG{n}{computeNormalVectors}\PYG{p}{(}\PYG{n}{nix}\PYG{p}{,} \PYG{n}{niy}\PYG{p}{,} \PYG{n}{njx}\PYG{p}{,} \PYG{n}{njy}\PYG{p}{,} \PYG{n}{xn}\PYG{p}{,} \PYG{n}{yn}\PYG{p}{,} \PYG{n}{Ai}\PYG{p}{,} \PYG{n}{Aj}\PYG{p}{);}
+  \PYG{n}{computeVolume}\PYG{p}{(}\PYG{n}{Volume}\PYG{p}{,} \PYG{n}{xn}\PYG{p}{,} \PYG{n}{yn}\PYG{p}{);}
+\end{Verbatim}

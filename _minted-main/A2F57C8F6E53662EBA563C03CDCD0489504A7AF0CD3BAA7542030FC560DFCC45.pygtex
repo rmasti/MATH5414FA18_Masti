@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kt}{int} \PYG{n}{dim}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{nj}\PYG{p}{,} \PYG{n}{ni}\PYG{p}{\PYGZcb{};}        \PYG{c+c1}{// 2 int array for MPI\PYGZus{}Cart\PYGZus{}Create}
+  \PYG{k+kt}{int} \PYG{n}{reorder} \PYG{o}{=} \PYG{n}{FALSE}\PYG{p}{;}          \PYG{c+c1}{// Reorder for fastest comm}
+  \PYG{k+kt}{int} \PYG{n}{period}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{FALSE}\PYG{p}{,} \PYG{n}{TRUE}\PYG{p}{\PYGZcb{};}\PYG{c+c1}{// periodic boundary partit}
+
+  \PYG{n}{MPI\PYGZus{}Comm} \PYG{n}{com2d}\PYG{p}{;} \PYG{c+c1}{// Setup cartesian communicator}
+  \PYG{n}{MPI\PYGZus{}Cart\PYGZus{}create}\PYG{p}{(}\PYG{n}{MPI\PYGZus{}COMM\PYGZus{}WORLD}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{dim}\PYG{p}{,} \PYG{n}{period}\PYG{p}{,} \PYG{n}{reorder}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{com2d}\PYG{p}{);}
+  \PYG{n}{MPI\PYGZus{}Comm\PYGZus{}rank}\PYG{p}{(}\PYG{n}{com2d}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{rank}\PYG{p}{);}
+\end{Verbatim}
