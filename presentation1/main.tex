@@ -1,0 +1,65 @@
+\documentclass[aspectratio=169]{beamer}
+%\documentclass[aspectratio=43]{beamer}
+
+\usepackage{graphicx}  % Required for including images
+\usepackage{natbib}
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage{txfonts}
+\usepackage{exscale}
+\usepackage{natbib}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\hypersetup{citecolor=maroon}
+\hypersetup{urlcolor=orange!80!}
+\hypersetup{linkcolor=maroon}
+
+\usetikzlibrary{shapes,arrows}
+
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=5.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=7em, text centered, rounded corners, minimum height=3em]
+\tikzstyle{line} = [draw, -latex]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=1em]
+
+\AtBeginSection[]{
+  \begin{frame}[noframenumbering]
+    \frametitle{Content}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand*{\rttensor}[1]{\overline{\overline{#1}}}
+
+\newcommand{\backupbegin}{
+   \newcounter{finalframe}
+   \setcounter{finalframe}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+   \setcounter{framenumber}{\value{finalframe}}
+}
+
+\usetheme[bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          ]{Blacksburg}
+
+\author[Robert M.]{Robert Masti}
+%\author{Author}
+\title[MATH5414 Presentation 1]{Parrallelizing 2D Curvilinear Coordinate Finite Volume Code from solving Euler equations to MagnetoHydrodynamic equations}
+
+%\subtitle{Samuel J. Langendorf, Scott C. Hsu}
+%\title{Title of presentation}
+\institute{Virginia Tech \\ Blacksburg}
+\date{\today}
+
+\begin{document}
+\include{content}
+\end{document}
+
