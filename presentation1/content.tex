@@ -329,18 +329,23 @@
 \begin{frame}[t]{Converting to GPU}
   \textbf{Converting CPU $\rightarrow$ GPU Challenges}
   \begin{itemize}
-    \item CPU heavily utilized the matrix library Eigen challenges are met in the indexing ($Q[rhoid](i,j)$ vs $Q[(i*nic+j)*NEQ+rhoid]$)
+    \item CPU code heavily utilized the matrix library Eigen challenges were met in the indexing ($Q[rhoid](i,j)$ vs $Q[(i*nic+j)*NEQ+rhoid]$)
     \item Host is used for mesh construction, $\mathbf{Q}$ initialization, and mpi set bc
-    \item Geometry (normal vecs, areas, volumes) and initialized $\mathbf{Q}$ are loaded onto device
+    \item Geometry (normal vecs, areas, volume), and initialized $\mathbf{Q}$ are loaded onto device
     \item On device: sourceTerm, MUSCL LR BT, 2dFlux F G, residual, and rungekutta
     \item $\mathbf{Q}$ is copied back to host for halo exchange
   \end{itemize}
 
-  \textbf{Note}
-  \begin{itemize}
-    \item Currently does not run successfully encountering issues (develops nans)
-    \item But characteristics on performance can be measured for the first few frames. 
-  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[t]{GPU}
+  \textbf{Density growth at t=0.12891, 560x480}
+  % took 3 mins
+ \begin{figure}[!htbp]
+   \includegraphics[width=0.85\linewidth]{fig/560x480gpu}
+   \centering
+ \end{figure}
 \end{frame}
 
 
@@ -380,7 +385,7 @@
     \item Verification and Validation study on the code
     \item Further debug OCCA kernels
     \item Optimize kernels
-    \item Begin mpi with multiple gpu test case
+    \item Begin mpi with multiple gpu on a very large test case
   \end{itemize}
 \end{frame}
 
