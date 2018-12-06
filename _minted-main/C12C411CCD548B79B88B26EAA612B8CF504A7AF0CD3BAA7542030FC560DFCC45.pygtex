@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{sendSize} \PYG{o}{=} \PYG{n}{nic}\PYG{o}{*}\PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{o}{*}\PYG{n}{NEQ}\PYG{p}{;}
+  \PYG{n}{Map2Eigen} \PYG{o}{*}\PYG{n}{tempBout}  \PYG{o}{=} \PYG{k}{new} \PYG{n}{Map2Eigen}\PYG{p}{(}\PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{,} \PYG{n}{nic}\PYG{p}{,} \PYG{n}{NEQ}\PYG{p}{);}
+  \PYG{k+kt}{int} \PYG{n}{jfo} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{// bottom face}
+  \PYG{k+kt}{int} \PYG{n}{jco} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{c+c1}{// bott inter offset}
+  \PYG{k+kt}{int} \PYG{n}{jgo} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{c+c1}{// ghost start bott}
+  \PYG{k+kt}{int} \PYG{n}{sign} \PYG{o}{=} \PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{c+c1}{// direction to push}
+  \PYG{k}{if}\PYG{p}{(}\PYG{n}{d} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}\PYG{c+c1}{// phys bndry conducting wall}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+      \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{nic}\PYG{o}{\PYGZhy{}}\PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{iff} \PYG{o}{=} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;}\PYG{c+c1}{// index for normvecs}
+        \PYG{k+kt}{int} \PYG{n}{jc} \PYG{o}{=} \PYG{n}{jco} \PYG{o}{+} \PYG{n}{sign}\PYG{o}{*}\PYG{n}{j}\PYG{p}{;} \PYG{c+c1}{// cell interior}
+        \PYG{k+kt}{int} \PYG{n}{jg} \PYG{o}{=} \PYG{n}{jgo} \PYG{o}{\PYGZhy{}} \PYG{n}{sign}\PYG{o}{*}\PYG{n}{j}\PYG{p}{;} \PYG{c+c1}{// ghost cell row\PYGZhy{}layer}
+        \PYG{p}{...}
+        \PYG{c+c1}{// bottom boundary no penetration conducting wall}
+        \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{uid}\PYG{p}{](}\PYG{n}{jg}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{nx}\PYG{o}{*}\PYG{p}{(}\PYG{n}{u}\PYG{o}{*}\PYG{n}{nx}\PYG{o}{+}\PYG{n}{v}\PYG{o}{*}\PYG{n}{ny}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{ny}\PYG{o}{*}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{u}\PYG{o}{*}\PYG{n}{ny} \PYG{o}{+} \PYG{n}{v}\PYG{o}{*}\PYG{n}{nx}\PYG{p}{);}
+        \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{vid}\PYG{p}{](}\PYG{n}{jg}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{ny}\PYG{o}{*}\PYG{p}{(}\PYG{n}{u}\PYG{o}{*}\PYG{n}{nx}\PYG{o}{+}\PYG{n}{v}\PYG{o}{*}\PYG{n}{ny}\PYG{p}{)} \PYG{o}{+} \PYG{n}{nx}\PYG{o}{*}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{u}\PYG{o}{*}\PYG{n}{ny} \PYG{o}{+} \PYG{n}{v}\PYG{o}{*}\PYG{n}{nx}\PYG{p}{);}
+        \PYG{p}{...} \PYG{c+c1}{//bxid byid}
+        \PYG{c+c1}{// extrapolate from cells in sign dir}
+        \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{rhoid}\PYG{p}{](}\PYG{n}{jg}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)} \PYG{o}{=} \PYG{l+m+mf}{2.0}\PYG{o}{*}\PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{rhoid}\PYG{p}{](}\PYG{n}{jg}\PYG{o}{+}\PYG{n}{sign}\PYG{o}{*}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}
+          \PYG{o}{\PYGZhy{}} \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{rhoid}\PYG{p}{](}\PYG{n}{jg}\PYG{o}{+}\PYG{n}{sign}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{);}
+        \PYG{p}{...} \PYG{c+c1}{//pid bzid wid}
+      \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{else}\PYG{p}{\PYGZob{}} \PYG{c+c1}{// not phys bndry}
+    \PYG{c+c1}{// send bott dat}
+    \PYG{n}{out} \PYG{o}{=} \PYG{n}{d}\PYG{p}{;}
+    \PYG{n}{tag} \PYG{o}{=} \PYG{l+m+mi}{444}\PYG{p}{;} \PYG{c+c1}{//tag444top receive}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+      \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{eq} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{eq} \PYG{o}{\PYGZlt{}} \PYG{n}{NEQ}\PYG{p}{;} \PYG{n}{eq}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{tempBout}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{row}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{=} \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{row}\PYG{p}{(}\PYG{n}{jco}\PYG{o}{+}\PYG{n}{sign}\PYG{o}{*}\PYG{n}{j}\PYG{p}{);}
+    \PYG{n}{MPI\PYGZus{}Isend}\PYG{p}{(}\PYG{n}{tempBout}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q\PYGZus{}raw}\PYG{p}{,} \PYG{n}{sendSize}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}DOUBLE}\PYG{p}{,} \PYG{n}{out}\PYG{p}{,} \PYG{n}{tag}\PYG{p}{,}
+      \PYG{n}{com2d}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{requestOut}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]);}
+  \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

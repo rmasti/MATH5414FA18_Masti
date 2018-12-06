@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kt}{double} \PYG{n}{rhoL}\PYG{o}{=}\PYG{l+m+mf}{1.0}\PYG{p}{;}
+  \PYG{k+kt}{double} \PYG{n}{rhoH}\PYG{o}{=}\PYG{l+m+mf}{1.0}\PYG{p}{;}
+  \PYG{k+kt}{double} \PYG{n}{P0}\PYG{o}{=}\PYG{l+m+mf}{2.5}\PYG{p}{;}
+  \PYG{k+kt}{double} \PYG{n}{B}\PYG{o}{=}\PYG{l+m+mf}{0.125}
+  \PYG{k+kt}{double} \PYG{n}{g}\PYG{o}{=}\PYG{l+m+mf}{0.1}\PYG{p}{;}
+\end{Verbatim}

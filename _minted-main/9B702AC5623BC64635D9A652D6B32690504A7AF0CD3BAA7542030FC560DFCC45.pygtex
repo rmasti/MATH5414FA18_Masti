@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{p}{...}
+  \PYG{n}{dt} \PYG{o}{=} \PYG{n}{computeTimeStepU}\PYG{p}{(}\PYG{n}{Volume}\PYG{p}{,} \PYG{n}{Ai}\PYG{p}{,} \PYG{n}{Aj}\PYG{p}{,} \PYG{n}{nix}\PYG{p}{,} \PYG{n}{niy}\PYG{p}{,} \PYG{n}{njx}\PYG{p}{,} \PYG{n}{njy}\PYG{p}{,} \PYG{n}{U}\PYG{p}{,} \PYG{n}{C}\PYG{p}{);}
+  \PYG{n}{MPI\PYGZus{}Allreduce}\PYG{p}{(}\PYG{n}{MPI\PYGZus{}IN\PYGZus{}PLACE}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{dt}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}DOUBLE}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}MIN}\PYG{p}{,} \PYG{n}{com2d}\PYG{p}{);}
+  \PYG{p}{...}
+\end{Verbatim}

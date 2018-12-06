@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{nj}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{ni}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+      \PYG{p}{...}
+      \PYG{c+c1}{//compute radius and angle}
+      \PYG{k+kt}{double} \PYG{n}{r} \PYG{o}{=} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{x}\PYG{o}{*}\PYG{n}{x} \PYG{o}{+} \PYG{n}{y}\PYG{o}{*}\PYG{n}{y}\PYG{p}{);}
+      \PYG{k+kt}{double} \PYG{n}{thet} \PYG{o}{=} \PYG{n}{atan2}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,}\PYG{n}{x}\PYG{p}{);}
+      \PYG{c+c1}{//fill density}
+      \PYG{k}{if}\PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZlt{}} \PYG{n}{rMiddle}\PYG{p}{)}
+        \PYG{n}{V}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{rhoid}\PYG{p}{](}\PYG{n}{j}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{o}{=}\PYG{n}{rhoL}\PYG{p}{;} \PYG{c+c1}{// fill light fluid}
+      \PYG{k}{else}
+        \PYG{n}{V}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{rhoid}\PYG{p}{](}\PYG{n}{j}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{o}{=}\PYG{n}{rhoH}\PYG{p}{;} \PYG{c+c1}{// fill heavy fluid}
+      \PYG{p}{...}
+\end{Verbatim}

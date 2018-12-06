@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{err}{@}\PYG{n}{kernel} \PYG{k+kt}{void} \PYG{n}{computeRes}\PYG{p}{(}\PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{Res}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{S}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{F}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{G}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{Aj}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{Ai}\PYG{p}{,}
+        \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{Volume}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{o\PYGZus{}njc}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}  \PYG{err}{@}\PYG{n}{tile}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{err}{@}\PYG{n}{outer}\PYG{p}{,} \PYG{err}{@}\PYG{n}{inner}\PYG{p}{))\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{o\PYGZus{}nic}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{;} \PYG{err}{@}\PYG{n}{tile}\PYG{p}{(}\PYG{l+m+mi}{32}\PYG{p}{,} \PYG{err}{@}\PYG{n}{inner}\PYG{p}{))\PYGZob{}}
+      \PYG{c+c1}{// res = right + top \PYGZhy{} left \PYGZhy{} bottom \PYGZhy{} source}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{nj} \PYG{o}{=} \PYG{n}{o\PYGZus{}njc}\PYG{p}{;}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{ni} \PYG{o}{=} \PYG{n}{o\PYGZus{}nic}\PYG{p}{;}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{idl} \PYG{o}{=} \PYG{p}{(}\PYG{n}{j}\PYG{o}{*}\PYG{p}{(}\PYG{n}{ni}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{idr} \PYG{o}{=} \PYG{p}{(}\PYG{n}{j}\PYG{o}{*}\PYG{p}{(}\PYG{n}{ni}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{+}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{);}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{idb} \PYG{o}{=} \PYG{p}{(}\PYG{n}{j}\PYG{o}{*}\PYG{n}{ni}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{idc} \PYG{o}{=} \PYG{p}{(}\PYG{n}{j}\PYG{o}{*}\PYG{n}{ni}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{idt} \PYG{o}{=} \PYG{p}{((}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{n}{ni}\PYG{o}{+}\PYG{n}{i}\PYG{p}{);}
+
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{eq} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{eq} \PYG{o}{\PYGZlt{}} \PYG{n}{o\PYGZus{}NEQ}\PYG{p}{;} \PYG{n}{eq}\PYG{o}{++}\PYG{p}{)\PYGZob{}}
+        \PYG{n}{Res}\PYG{p}{[}\PYG{n}{idc}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]} \PYG{o}{=} \PYG{n}{F}\PYG{p}{[}\PYG{n}{idl}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]}\PYG{o}{*}\PYG{n}{Ai}\PYG{p}{[}\PYG{n}{idl}\PYG{p}{]}
+          \PYG{o}{+} \PYG{n}{G}\PYG{p}{[}\PYG{n}{idb}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]}\PYG{o}{*}\PYG{n}{Aj}\PYG{p}{[}\PYG{n}{idb}\PYG{p}{]}
+          \PYG{o}{\PYGZhy{}} \PYG{n}{F}\PYG{p}{[}\PYG{n}{idr}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]}\PYG{o}{*}\PYG{n}{Ai}\PYG{p}{[}\PYG{n}{idr}\PYG{p}{]}
+          \PYG{o}{\PYGZhy{}} \PYG{n}{G}\PYG{p}{[}\PYG{n}{idt}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]}\PYG{o}{*}\PYG{n}{Aj}\PYG{p}{[}\PYG{n}{idt}\PYG{p}{]}
+          \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{[}\PYG{n}{idc}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{eq}\PYG{p}{]}\PYG{o}{*}\PYG{n}{Volume}\PYG{p}{[}\PYG{n}{idc}\PYG{p}{];}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

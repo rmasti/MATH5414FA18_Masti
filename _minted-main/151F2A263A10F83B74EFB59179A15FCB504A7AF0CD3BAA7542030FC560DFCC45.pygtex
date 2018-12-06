@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n}{Map2Eigen} \PYG{o}{*}\PYG{n}{tempLin}  \PYG{o}{=} \PYG{k}{new} \PYG{n}{Map2Eigen}\PYG{p}{(}\PYG{n}{njc} \PYG{p}{,} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{,} \PYG{n}{NEQ}\PYG{p}{);}
+  \PYG{n}{sendSize} \PYG{o}{=} \PYG{n}{njc}\PYG{o}{*}\PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{o}{*}\PYG{n}{NEQ}\PYG{p}{;}
+  \PYG{n}{in} \PYG{o}{=} \PYG{n}{l}\PYG{p}{;}
+  \PYG{n}{tag} \PYG{o}{=} \PYG{l+m+mi}{111}\PYG{p}{;}
+  \PYG{n}{ico} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;}\PYG{c+c1}{//left inter offset}
+  \PYG{n}{sign} \PYG{o}{=} \PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{n}{MPI\PYGZus{}Irecv}\PYG{p}{(}\PYG{n}{tempLin}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q\PYGZus{}raw}\PYG{p}{,} \PYG{n}{sendSize}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}DOUBLE}\PYG{p}{,} \PYG{n}{in}\PYG{p}{,} \PYG{n}{tag}\PYG{p}{,} \PYG{n}{com2d}\PYG{p}{,}
+    \PYG{o}{\PYGZam{}}\PYG{n}{requestIn}\PYG{p}{);}
+  \PYG{n}{MPI\PYGZus{}Wait}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{requestIn}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{status}\PYG{p}{);}
+  \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{eq} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{eq} \PYG{o}{\PYGZlt{}} \PYG{n}{NEQ}\PYG{p}{;} \PYG{n}{eq}\PYG{o}{++}\PYG{p}{)}
+      \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{col}\PYG{p}{((}\PYG{n}{ico}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{sign}\PYG{o}{*}\PYG{n}{i}\PYG{p}{)} \PYG{o}{=} \PYG{n}{tempLin}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{col}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+  \PYG{p}{...}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{d} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)\PYGZob{}}
+    \PYG{n}{Map2Eigen} \PYG{o}{*}\PYG{n}{tempBin}  \PYG{o}{=} \PYG{k}{new} \PYG{n}{Map2Eigen}\PYG{p}{(}\PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{,} \PYG{n}{nic}\PYG{p}{,} \PYG{n}{NEQ}\PYG{p}{);}
+    \PYG{n}{sendSize} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{o}{*}\PYG{n}{nic}\PYG{o}{*}\PYG{n}{NEQ}\PYG{p}{;}
+    \PYG{n}{in} \PYG{o}{=} \PYG{n}{d}\PYG{p}{;}
+    \PYG{n}{tag} \PYG{o}{=} \PYG{l+m+mi}{333}\PYG{p}{;}
+    \PYG{n}{jco} \PYG{o}{=} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{c+c1}{// bott inter offset}
+    \PYG{n}{sign} \PYG{o}{=} \PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{MPI\PYGZus{}Irecv}\PYG{p}{(}\PYG{n}{tempBin}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q\PYGZus{}raw}\PYG{p}{,} \PYG{n}{sendSize}\PYG{p}{,} \PYG{n}{MPI\PYGZus{}DOUBLE}\PYG{p}{,} \PYG{n}{in}\PYG{p}{,} \PYG{n}{tag}\PYG{p}{,} \PYG{n}{com2d}\PYG{p}{,}
+      \PYG{o}{\PYGZam{}}\PYG{n}{requestIn}\PYG{p}{);} \PYG{c+c1}{//tag444top}
+    \PYG{n}{MPI\PYGZus{}Wait}\PYG{p}{(}\PYG{o}{\PYGZam{}}\PYG{n}{requestIn}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{status}\PYG{p}{);}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{C}\PYG{p}{.}\PYG{n}{num\PYGZus{}ghost}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{)}
+      \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{eq} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{eq} \PYG{o}{\PYGZlt{}} \PYG{n}{NEQ}\PYG{p}{;} \PYG{n}{eq}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{U}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{row}\PYG{p}{(}\PYG{n}{jco}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{sign}\PYG{o}{*}\PYG{n}{j}\PYG{p}{)} \PYG{o}{=} \PYG{n}{tempBin}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n}{Q}\PYG{p}{[}\PYG{n}{eq}\PYG{p}{].}\PYG{n}{row}\PYG{p}{(}\PYG{n}{j}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{p}{...}
+\end{Verbatim}

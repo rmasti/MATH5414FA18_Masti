@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{void} \PYG{n+nf}{mpiSetBc}\PYG{p}{(}
+    \PYG{n}{Map2Eigen}\PYG{o}{*} \PYG{n}{U}\PYG{p}{,}                 \PYG{c+c1}{//Out: conserved vars}
+    \PYG{k}{const} \PYG{n}{RowMajorMatrixXd}\PYG{o}{\PYGZam{}} \PYG{n}{nix}\PYG{p}{,}  \PYG{c+c1}{//In: norm vec xcomp i dir}
+    \PYG{k}{const} \PYG{n}{RowMajorMatrixXd}\PYG{o}{\PYGZam{}} \PYG{n}{niy}\PYG{p}{,}  \PYG{c+c1}{//In: norm vec ycomp i dir}
+    \PYG{k}{const} \PYG{n}{RowMajorMatrixXd}\PYG{o}{\PYGZam{}} \PYG{n}{njx}\PYG{p}{,}  \PYG{c+c1}{//In: norm vec xcomp j dir}
+    \PYG{k}{const} \PYG{n}{RowMajorMatrixXd}\PYG{o}{\PYGZam{}} \PYG{n}{njy}\PYG{p}{,}  \PYG{c+c1}{//In: norm vec ycomp j dir}
+    \PYG{n}{MPI\PYGZus{}Comm}\PYG{o}{\PYGZam{}} \PYG{n}{com2d}\PYG{p}{,}              \PYG{c+c1}{//In: Communicator}
+    \PYG{n}{constants} \PYG{n}{C}\PYG{p}{)\PYGZob{}}
+\end{Verbatim}

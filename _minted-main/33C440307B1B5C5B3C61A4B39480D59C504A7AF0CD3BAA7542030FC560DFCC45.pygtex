@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{err}{@}\PYG{n}{kernel} \PYG{k+kt}{void} \PYG{n}{computeSourceTerm}\PYG{p}{(}
+        \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{S}\PYG{p}{,}
+        \PYG{err}{@}\PYG{k}{restrict} \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{U}\PYG{p}{,}
+        \PYG{err}{@}\PYG{k}{restrict} \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{xc}\PYG{p}{,}
+        \PYG{err}{@}\PYG{k}{restrict} \PYG{k}{const} \PYG{k+kt}{double}\PYG{o}{*} \PYG{n}{yc}\PYG{p}{)\PYGZob{}}
+  \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{o\PYGZus{}njc}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}\PYG{err}{@}\PYG{n}{tile}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{err}{@}\PYG{n}{outer}\PYG{p}{,} \PYG{err}{@}\PYG{n}{inner}\PYG{p}{))}
+  \PYG{p}{\PYGZob{}}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{o\PYGZus{}nic}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{;} \PYG{err}{@}\PYG{n}{tile}\PYG{p}{(}\PYG{l+m+mi}{32}\PYG{p}{,} \PYG{err}{@}\PYG{n}{inner}\PYG{p}{))}
+    \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{jg} \PYG{o}{=} \PYG{n}{j} \PYG{o}{+} \PYG{n}{o\PYGZus{}ng}\PYG{p}{;}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{ig} \PYG{o}{=} \PYG{n}{i} \PYG{o}{+} \PYG{n}{o\PYGZus{}ng}\PYG{p}{;}
+      \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{j}\PYG{o}{*}\PYG{n}{o\PYGZus{}nic}\PYG{o}{+}\PYG{n}{i}\PYG{p}{;}
+      \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{rho} \PYG{o}{=} \PYG{n}{U}\PYG{p}{[(}\PYG{n}{jg}\PYG{o}{*}\PYG{n}{o\PYGZus{}nic\PYGZus{}g}\PYG{o}{+}\PYG{n}{ig}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{o\PYGZus{}rhoid}\PYG{p}{];}
+      \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{thet} \PYG{o}{=} \PYG{n}{atan2}\PYG{p}{(}\PYG{n}{yc}\PYG{p}{[}\PYG{n}{j}\PYG{o}{*}\PYG{n}{o\PYGZus{}nic}\PYG{o}{+}\PYG{n}{i}\PYG{p}{],} \PYG{n}{xc}\PYG{p}{[}\PYG{n}{j}\PYG{o}{*}\PYG{n}{o\PYGZus{}nic}\PYG{o}{+}\PYG{n}{i}\PYG{p}{]);}
+      \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{su} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{p}{(}\PYG{n}{rho}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{o\PYGZus{}ACCEL}\PYG{p}{)}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{thet}\PYG{p}{);}
+      \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{sv} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{p}{(}\PYG{n}{rho}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{n}{o\PYGZus{}ACCEL}\PYG{p}{)}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{thet}\PYG{p}{);}
+      \PYG{c+c1}{// Need to take advantage of contiguous memory revisit later}
+      \PYG{n}{S}\PYG{p}{[(}\PYG{n}{fill}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{o\PYGZus{}piid}\PYG{p}{]}\PYG{o}{=} \PYG{p}{((}\PYG{n}{su}\PYG{o}{*}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}ACCEL}\PYG{o}{*}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{thet}\PYG{p}{))}
+        \PYG{o}{+} \PYG{p}{(}\PYG{n}{sv}\PYG{o}{*}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}ACCEL}\PYG{o}{*}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{thet}\PYG{p}{)));}
+      \PYG{n}{S}\PYG{p}{[(}\PYG{n}{fill}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{o\PYGZus{}uid}\PYG{p}{]} \PYG{o}{=} \PYG{n}{su}\PYG{p}{;}
+      \PYG{n}{S}\PYG{p}{[(}\PYG{n}{fill}\PYG{p}{)}\PYG{o}{*}\PYG{n}{o\PYGZus{}NEQ}\PYG{o}{+}\PYG{n}{o\PYGZus{}vid}\PYG{p}{]} \PYG{o}{=} \PYG{n}{sv}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
